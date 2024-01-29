@@ -5,7 +5,7 @@ from .models import Enroll, ContactUs, Blog
 
 @admin.register(Enroll)
 class EnrollAdmin(admin.ModelAdmin):
-    list_display = ['first_name', 'last_name', 'email', 'phone_no', 'education', 'passing_out_year', 'enroll_course']
+    list_display = ['first_name', 'last_name', 'email', 'phone_no', 'education', 'passing_out_year', 'enroll_course', 'resume']
     search_fields = ['first_name', 'last_name', 'email', 'phone_no', 'education', 'passing_out_year', 'enroll_course']
 
 

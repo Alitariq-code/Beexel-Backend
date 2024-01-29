@@ -5,7 +5,7 @@ from home.models import Enroll, ContactUs, Blog
 class EnrollSerializer(serializers.ModelSerializer):
     class Meta:
         model = Enroll
-        fields = ['first_name', 'last_name', 'email', 'phone_no', 'education', 'passing_out_year', 'enroll_course']
+        fields = ['first_name', 'last_name', 'email', 'phone_no', 'education', 'passing_out_year', 'enroll_course', 'resume']
 
 
 class ContactUsSerializer(serializers.ModelSerializer):

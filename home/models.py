@@ -12,6 +12,9 @@ class Enroll(models.Model):
     education = models.CharField(max_length=300, null=True, blank=True)
     passing_out_year = models.CharField(max_length=300, null=True, blank=True)
     enroll_course = models.CharField(max_length=300, null=True, blank=True)
+    resume = models.FileField(upload_to='resume_uploads/')
+
+
 
     def __str__(self):
         return self.first_name
