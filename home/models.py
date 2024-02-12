@@ -33,14 +33,14 @@ class ContactUs(models.Model):
 
 class Blog(models.Model):
     CATEGORY_CHOICES = [
-        ('technique_training', 'Technique and Training'),
-        ('industry_news', 'Industry News and Trends'),
-        ('safety_responsibility', 'Safety and Responsibility'),
-        ('competition_coverage', 'Competition Coverage'),
-        ('historical_perspectives', 'Historical Perspectives'),
+        ('data_science', 'Data Science'),
+        ('data_engineering', 'Data Engineering'),
+        ('machine_learning', 'Machine Learning'),
+        ('deep_learning', 'Deep Learning'),
+       
     ]
     title = models.CharField(max_length=255, null=True, blank=True)
     image = models.ImageField(upload_to='')
     category = models.CharField(max_length=200, choices=CATEGORY_CHOICES, null=True, blank=True)
     date_time = models.DateTimeField()
-    description = MarkdownxField()
+    description = models.TextField()
