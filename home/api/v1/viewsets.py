@@ -27,13 +27,27 @@ class EnrollViewSet(viewsets.ModelViewSet):
         'resume_url': instance.resume.url if instance.resume else '',
         }
     }
-        google_sheet(options)
+        # google_sheet(options)
         send_email(options)
-
 
 class ContactUsViewSet(viewsets.ModelViewSet):
     queryset = ContactUs.objects.all()
     serializer_class = ContactUsSerializer
+    def perform_create(self, serializer):
+        # Call the parent class's perform_create method to save the object to the database
+        instance = serializer.save()
+# Prepare options dictionary with data from the ContactUs instance
+        options = {
+         'type': 'contact',
+         'data': {
+              'full_name': instance.full_name,
+             'email': instance.email,
+            
+            'message': instance.message,
+         }
+        }
+        # Call the functions to send email and update Google Sheet
+        send_email(options)
 
 
 class BlogViewSet(viewsets.ModelViewSet):

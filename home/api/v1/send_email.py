@@ -150,6 +150,51 @@ def render_template(context):
 #     print('Email sent successfully!')
 
 
+def render_contact_template(context):
+    template = f"""
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Contact Us Details - enlivenAi</title>
+        <style>
+          body {{
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 20px;
+            background-color: #F5F5F5;
+            color: #333;
+          }}
+          h1 {{
+            color: #007BFF;
+          }}
+          p {{
+            margin-bottom: 15px;
+          }}
+          strong {{
+            font-weight: bold;
+          }}
+          a {{
+            color: #007BFF;
+            text-decoration: none;
+          }}
+          a:hover {{
+            text-decoration: underline;
+          }}
+        </style>
+      </head>
+      <body>
+        <h1>Contact Us Details - Beexel</h1>
+        <p><strong>Full Name:</strong> {context['full_name']}</p>
+        <p><strong>Email:</strong> {context['email']}</p>
+       
+        <p><strong>Message:</strong> {context['message']}</p>
+      </body>
+    </html>
+    """
+    return template
 
 
 def send_email(options):
@@ -168,8 +213,8 @@ def send_email(options):
     html_content=''
     if options["type"]=='apply':
      html_content = render_template(options["data"])
-    # elif options["type"] == 'contact':
-    #    html_content = render_contact_template(options["data"])
+    elif options["type"] == 'contact':
+       html_content = render_contact_template(options["data"])
     msg = MIMEMultipart()
     msg['From'] = 'Nosheen <nosheenbu1@gmail.com>'
     msg['To'] = 'hamza@enlivensai.com'
