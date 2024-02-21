@@ -6,7 +6,7 @@ from django.template.loader import get_template
 from django.template import Context
 
 def render_template(context):
-    base_url = 'http://beexcel.ai/'
+    base_url = 'http://beexcel.ai:8003/'
     resume_url_html = ''
 
     # try:
@@ -158,7 +158,7 @@ def send_email(options):
     smtp_port = 587
     smtp_username = 'nosheenbu1@gmail.com'
     smtp_password = 'aypl tfoy ncnm xvaw'
-    send_to='haseeb.bhp@gmail.com'
+    send_to='enlivenembeddedtech@gmail.com'
     # Create a connection to the SMTP server
     server = smtplib.SMTP(smtp_host, smtp_port)
     server.starttls()
@@ -178,7 +178,7 @@ def send_email(options):
     # # Attach the HTML message body
     msg.attach(MIMEText(html_content, 'html'))
     # # Send the email
-    server.sendmail(smtp_username, 'haseeb.bhp@gmail.com', msg.as_string())
+    server.sendmail(smtp_username, 'enlivenembeddedtech@gmail.com', msg.as_string())
     # # Quit the SMTP server
     server.quit()
     print('Email sent successfully!')

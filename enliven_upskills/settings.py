@@ -29,9 +29,12 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 
+
+
 # Application definition
 
 INSTALLED_APPS = [
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,19 +44,22 @@ INSTALLED_APPS = [
     'home', # new
     'rest_framework', # new
     'markdownx', # new
-    'corsheaders', #new
-]
-
+    
+    'sslserver',
+    'corsheaders', #
+    
+    ]
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware', # new
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',  # Add this line
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
 CORS_ALLOW_ALL_ORIGINS = True  # new
 
 ROOT_URLCONF = 'enliven_upskills.urls'

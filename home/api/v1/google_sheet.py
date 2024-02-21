@@ -4,7 +4,7 @@ from google.oauth2 import service_account
 def google_sheet(options):
     print(options)
     # Specify the path to your JSON key file
-    key_path = r'D:\enliven updated\enliven_upskills\home\api\v1\key.json'
+    key_path = r'/home/ubuntu/enliven/Enliven_Upskills/home/api/v1/key.json'
 
 
     # key_path = '/home/alicode/Desktop/ssh/Enliven/home/api/v1/key.json'

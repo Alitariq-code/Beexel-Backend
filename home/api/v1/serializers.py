@@ -22,9 +22,11 @@ def replace_line_breaks(input_string):
 class BlogSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blog
-        fields = ['id','title', 'image', 'category', 'date_time', 'description']
+        fields = ['id', 'title', 'image', 'category', 'date_time', 'description']
     def to_representation(self, instance):
-        response = super().to_representation(instance)
-        
-        response['description'] = replace_line_breaks(response['description'])
-        return response
+        data = super().to_representation(instance)
+        exclude_description = self.context.get('exclude_description', False)
+        # Exclude 'description' field if specified in the context
+        if exclude_description:
+            data.pop('description', None)
+        return data

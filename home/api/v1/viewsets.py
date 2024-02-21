@@ -4,7 +4,7 @@ from home.models import Enroll, ContactUs, Blog
 from .serializers import EnrollSerializer, ContactUsSerializer, BlogSerializer
 from .google_sheet import google_sheet
 from .send_email import send_email
-
+from rest_framework.response import Response
 
 class EnrollViewSet(viewsets.ModelViewSet):
     queryset = Enroll.objects.all()
@@ -39,3 +39,14 @@ class ContactUsViewSet(viewsets.ModelViewSet):
 class BlogViewSet(viewsets.ModelViewSet):
     queryset = Blog.objects.all()
     serializer_class = BlogSerializer
+    def list(self, request, *args, **kwargs):
+        # Set context to exclude 'description' field
+        serializer_context = {'request': request, 'exclude_description': True}
+        serializer = self.get_serializer(self.queryset, many=True, context=serializer_context)
+        return Response(serializer.data)
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        # Set context to include all fields
+        serializer_context = {'request': request, 'exclude_description': False}
+        serializer = self.get_serializer(instance, context=serializer_context)
+        return Response(serializer.data)
